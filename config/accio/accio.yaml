@@ -15,8 +15,8 @@ image0_topic: "/camera/camera/color/image_raw"
 output_path: "/home/td/slam/vins_fusion_ws/src/VINS-Fusion/output"
 
 cam0_calib: "color.yaml"
-image_width: 640
-image_height: 480
+image_width: 1280
+image_height: 720
    
 
 # Extrinsic parameter between IMU and Camera.
