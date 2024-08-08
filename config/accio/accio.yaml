@@ -12,7 +12,7 @@ imu_topic: "/imu"
 wheel_topic: "/odom"  
 #TODO check the distortion
 image0_topic: "/camera/camera/color/image_raw"
-output_path: "/home/td/slam/vins_fusion_ws/src/VINS-Fusion/output"
+output_path: "~/catkin_ws/src/VIW-Fusion/output"
 
 cam0_calib: "color.yaml"
 image_width: 1280

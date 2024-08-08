@@ -13,7 +13,7 @@ wheel_topic: "/ridgeback_velocity_controller/odom"   #"/ridgeback_velocity_contr
 #TODO check the distortion
 image0_topic: "/camera/infra1/image_rect_raw"
 image1_topic: "/camera/infra2/image_rect_raw"
-output_path: "/home/td/slam/vins_fusion_ws/src/VINS-Fusion/output"
+output_path: "~/catkin_ws/src/VIW-Fusion/output"
 
 cam0_calib: "infra1.yaml"
 cam1_calib: "infra2.yaml"

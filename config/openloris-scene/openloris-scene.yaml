@@ -8,11 +8,11 @@ only_initial_with_wheel: 0 #只利用wheel进行初始化，不加入因子图
 plane: 1
 num_of_cam: 1
 
-imu_topic: "/d400/accel/sample" #"/d400/gyro/sample"
+imu_topic: "/imu0" 
 wheel_topic: "/odom"  
 #TODO check the distortion
 image0_topic: "/d400/color/image_raw"
-output_path: "/home/td/slam/vins_fusion_ws/src/VINS-Fusion/output"
+output_path: "~/catkin_ws/src/VIW-Fusion/output"
 
 cam0_calib: "color.yaml"
 image_width: 640
@@ -35,20 +35,10 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.0,   0.0,   1.0,  0.041,
-          -1.0,   0.0,   0.0,  0.307,
-           0.0,  -1.0,   0.0,  0.544,
+   data: [ 0.9999754,   0.0038491,   0.0058547,  0.0203127935528755,
+          -0.0038287,   0.9999865,   -0.0035019,  -0.0051032523624599,
+           -0.0058681,  0.0034794,   0.9999768,  -0.0112013882026076,
            0,     0,     0,    1 ]
-
-body_T_cam1: !!opencv-matrix
-   rows: 4
-   cols: 4
-   dt: d
-   data: [ 0.0,   0.0,   1.0,  0.041,
-           -1.0,   0.0,   0.0, 0.258,
-           0.0,  -1.0,   0.0,  0.544,
-           0,     0,     0,    1 ]
-
 
 # Extrinsic parameter between IMU and Wheel.
 estimate_wheel_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
