@@ -8,14 +8,14 @@ only_initial_with_wheel: 0 #只利用wheel进行初始化，不加入因子图
 plane: 1
 num_of_cam: 1
 
-imu_topic: "/imu0" 
+imu_topic: "/d400/imu0" 
 wheel_topic: "/odom"  
 #TODO check the distortion
 image0_topic: "/d400/color/image_raw"
 output_path: "~/catkin_ws/src/VIW-Fusion/output"
 
 cam0_calib: "color.yaml"
-image_width: 640
+image_width: 848
 image_height: 480
    
 
@@ -31,7 +31,7 @@ extrinsic_type: 3 # 0 ALL
                   # 3 no z
                   # 4 no rotation and no z
 
-body_T_cam0: !!opencv-matrix
+body_T_cam0: !!opencv-matrix # Found from /tf_static quaternion converted to rot matrix
    rows: 4
    cols: 4
    dt: d
@@ -52,7 +52,8 @@ extrinsic_type_wheel: 3 # 0 ALL
                         # 3 no z
                         # 4 no rotation and no z
 
-#wheel to body
+# Not yet configured
+#wheel to body 
 body_T_wheel: !!opencv-matrix
   rows: 4
   cols: 4
