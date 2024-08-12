@@ -11,12 +11,12 @@ num_of_cam: 1
 imu_topic: "/imu"
 wheel_topic: "/odom"  
 #TODO check the distortion
-image0_topic: "/camera/camera/color/image_raw"
+image0_topic: "/camera/rgb/image_raw"
 output_path: "~/catkin_ws/src/VIW-Fusion/output"
 
 cam0_calib: "color.yaml"
-image_width: 1280
-image_height: 720
+image_width: 1920
+image_height: 1080
    
 
 # Extrinsic parameter between IMU and Camera.
@@ -35,9 +35,9 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.0,   0.0,   1.0,  0.264,
-          -1.0,   0.0,   0.0,  0.0,
-           0.0,  -1.0,   0.0,  0.023,
+   data: [ 1.0,  0.0,   0.0,  0.064,
+           0.0,  1.0,   0.0,  -0.065,
+           0.0,  0.0,   1.0,  0.026,
            0,     0,     0,    1 ]
 
 # Extrinsic parameter between IMU and Wheel.
@@ -57,10 +57,10 @@ body_T_wheel: !!opencv-matrix
   rows: 4
   cols: 4
   dt: d
-  data: [1, 0, 0, 0,
-         0, 1, 0, 0,
-         0, 0, 1, -0.14,
-         0, 0, 0, 1]
+  data: [  0.9999900,  0.0020000, -0.0040000, 0,
+           -0.0020000,  0.9999980,  0.0000040, 0,
+           0.0040000,  0.0000040,  0.9999920, -0.111,
+           0, 0, 0, 1]
 
 
 #plane noise
