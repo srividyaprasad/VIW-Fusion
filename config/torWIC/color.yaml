@@ -1,0 +1,40 @@
+%YAML:1.0
+---
+model_type: PINHOLE
+camera_name: camera
+image_width: 640  # Updated based on the new width
+image_height: 360  # Updated based on the new height
+distortion_parameters:
+   k1: 0.0  # No radial distortion coefficients provided, assuming no distortion
+   k2: 0.0  # No radial distortion coefficients provided, assuming no distortion
+   p1: 0.0  # Assuming no tangential distortion
+   p2: 0.0  # Assuming no tangential distortion
+projection_parameters:
+   fx: 461.0956115722656  # Updated focal length in x direction
+   fy: 460.9181823730469  # Updated focal length in y direction
+   cx: 325.4782409667969  # Updated principal point x coordinate
+   cy: 177.57662963867188  # Updated principal point y coordinate
+
+'''
+header: 
+  seq: 273
+  stamp: 
+    secs: 1581627711
+    nsecs: 891016483
+  frame_id: "realsense_front_camera_color_optical_frame"
+height: 360
+width: 640
+distortion_model: "plumb_bob"
+D: [0.0, 0.0, 0.0, 0.0, 0.0]
+K: [461.0956115722656, 0.0, 325.4782409667969, 0.0, 460.9181823730469, 177.57662963867188, 0.0, 0.0, 1.0]
+R: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+P: [461.0956115722656, 0.0, 325.4782409667969, 0.0, 0.0, 460.9181823730469, 177.57662963867188, 0.0, 0.0, 0.0, 1.0, 0.0]
+binning_x: 0
+binning_y: 0
+roi: 
+  x_offset: 0
+  y_offset: 0
+  height: 0
+  width: 0
+  do_rectify: False
+  '''
