@@ -92,12 +92,20 @@ int main(int argc, char** argv)
 			//printf("%s\n", leftImagePath.c_str() );
 			//printf("%s\n", rightImagePath.c_str() );
 
+<<<<<<< HEAD
 			imLeft = cv::imread(leftImagePath, cv::IMREAD_GRAYSCALE );
+=======
+			imLeft = cv::imread(leftImagePath, cv::ImreadModes::IMREAD_GRAYSCALE );
+>>>>>>> ece868a8f02b3827e218b9611ef2e23166ce5eee
 			sensor_msgs::ImagePtr imLeftMsg = cv_bridge::CvImage(std_msgs::Header(), "mono8", imLeft).toImageMsg();
 			imLeftMsg->header.stamp = ros::Time(imageTimeList[i]);
 			pubLeftImage.publish(imLeftMsg);
 
+<<<<<<< HEAD
 			imRight = cv::imread(rightImagePath, cv::IMREAD_GRAYSCALE );
+=======
+			imRight = cv::imread(rightImagePath, cv::ImreadModes::IMREAD_GRAYSCALE );
+>>>>>>> ece868a8f02b3827e218b9611ef2e23166ce5eee
 			sensor_msgs::ImagePtr imRightMsg = cv_bridge::CvImage(std_msgs::Header(), "mono8", imRight).toImageMsg();
 			imRightMsg->header.stamp = ros::Time(imageTimeList[i]);
 			pubRightImage.publish(imRightMsg);

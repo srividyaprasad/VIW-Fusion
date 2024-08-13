@@ -17,7 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
     image_transport
         rosbag)
 set(OpenCV_DIR "/usr/local/share/OpenCV")
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 4 REQUIRED)
 
 message(WARNING "OpenCV_VERSION: ${OpenCV_VERSION}")
 

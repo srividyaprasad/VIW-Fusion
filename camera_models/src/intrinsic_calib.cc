@@ -274,7 +274,11 @@ main( int argc, char** argv )
                          0.5,
                          cv::Scalar( 255, 255, 255 ),
                          1,
+<<<<<<< HEAD
                          cv::LINE_AA );
+=======
+                         cv::LINE_AA);
+>>>>>>> ece868a8f02b3827e218b9611ef2e23166ce5eee
             cv::imshow( "Image", cbImages.at( i ) );
             cv::waitKey( 0 );
         }
