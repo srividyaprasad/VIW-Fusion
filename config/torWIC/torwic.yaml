@@ -3,10 +3,13 @@
 #common parameters
 #support: 1 imu 1 cam; 1 imu 2 cam: 2 cam; 
 imu: 1
+wheel: 1
+only_initial_with_wheel: 0 #只利用wheel进行初始化，不加入因子图
 plane: 1
 num_of_cam: 1
 
 imu_topic: "/imu/data"
+wheel_topic: "/velocity_control/odom"   #"/ridgeback_velocity_controller/odom"， “/odometry/filtered”
 #TODO check the distortion
 image0_topic: "/front/realsense/color/image_raw"
 output_path: "~/catkin_ws/src/VIW-Fusion/output"
@@ -32,10 +35,32 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.7081279,   0.1862230,   0.6810844,  0.148,
-          -0.7060776,  0.1825890,  0.6841898,  0.316,
-           0.0030533, -0.9653923,  0.2607843,  -0.174,
+   data: [ 0.0,   0.0,   1.0,  0.041,
+          -1.0,   0.0,   0.0,  0.307,
+           0.0,  -1.0,   0.0,  0.544,
            0,     0,     0,    1 ]
+
+# Extrinsic parameter between IMU and Wheel.
+estimate_wheel_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
+# 1  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.
+# 2  Don't know anything about extrinsic parameters. You don't need to give R,T. We will try to calibrate it. Do some rotation movement at beginning.
+#If you choose 0 or 1, you should write down the following matrix.
+
+extrinsic_type_wheel: 3 # 0 ALL
+                        # 1 Only translation
+                        # 2 Only Rotation
+                        # 3 no z
+                        # 4 no rotation and no z
+
+#wheel to body
+body_T_wheel: !!opencv-matrix
+  rows: 4
+  cols: 4
+  dt: d
+  data: [1, 0, 0, -0.208,
+         0, 1, 0, 0.290,
+         0, 0, 1, -0.168,
+         0, 0, 0, 1]
 
 
 #plane noise
@@ -69,6 +94,22 @@ gyr_n: 0.05        # gyroscope measurement noise standard deviation.     #0.05  
 acc_w: 7.1765713730075628e-04         # accelerometer bias random work noise standard deviation.  #0.002
 gyr_w: 4.0e-05       # gyroscope bias random work noise standard deviation.     #4.0e-5
 g_norm: 9.805         # gravity magnitude
+
+#wheel parameters
+# rad/s mono:0.004 stereo:0.002
+wheel_gyro_noise_sigma: 0.004
+#　m/s mono:0.01  stereo:0.006
+wheel_velocity_noise_sigma: 0.01
+
+estimate_wheel_intrinsic: 0
+# 0  Have an accurate intrinsic parameters. We will trust the following sx, sy, sw, don't change it.
+# 1  Have an initial guess about intrinsic parameters. We will optimize around your initial guess.
+# 2  TODO Don't know anything about intrinsic parameters. You don't need to give sx, sy, sw. We will try to calibrate it. Do some rotation movement at beginning.
+#If you choose 0 or 1, you should write down the following sx, sy, sw.
+# wheel intrinsic
+sx: 1.0
+sy: 1.0
+sw: 1.0
 
 
 #unsynchronization parameters
